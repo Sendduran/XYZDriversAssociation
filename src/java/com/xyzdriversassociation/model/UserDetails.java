@@ -12,14 +12,22 @@ import java.util.Date;
  * @author Thailan Sendduran
  */
 public class UserDetails {
-    
+    int user_id;
     String firstName;
     String lastName;
-    Date dob;
-    Date doc;
-    boolean accountStatus;
+    String userName;
+    String password;
+    String dob;
+    String doc;
+    String accountStatus;
+    
+    public UserDetails(){
+       
+    }
 
-    public UserDetails(String firstName, String lastName, Date dob, Date doc, boolean accountStatus) {
+    
+    
+    public UserDetails(String firstName, String lastName, String dob, String doc, String accountStatus) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dob = dob;
@@ -43,30 +51,52 @@ public class UserDetails {
         this.lastName = lastName;
     }
 
-    public Date getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 
-    public Date getDoc() {
+    public String getDoc() {
         return doc;
     }
 
-    public void setDoc(Date doc) {
+    public void setDoc(String doc) {
         this.doc = doc;
     }
 
-    public boolean isAccountStatus() {
+    public String getAccountStatus() {
         return accountStatus;
     }
 
-    public void setAccountStatus(boolean accountStatus) {
+    public void setAccountStatus(String accountStatus) {
         this.accountStatus = accountStatus;
     }
-    
+        public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
     
     
     
