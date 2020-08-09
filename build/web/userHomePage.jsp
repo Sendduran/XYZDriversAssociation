@@ -12,6 +12,10 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%
+        String data = session.getAttribute("username").toString();
+        %>
         <h1>Hello World!</h1>
+        Welcome <%= data %>
     </body>
 </html>

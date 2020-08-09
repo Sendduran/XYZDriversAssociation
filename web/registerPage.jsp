@@ -1,6 +1,6 @@
 <%-- 
-    Document   : registerPage
-    Created on : Aug 7, 2020, 10:03:06 AM
+    Document   : loginPage
+    Created on : Aug 7, 2020, 3:15:09 PM
     Author     : Thailan Sendduran
 --%>
 
@@ -9,34 +9,28 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Register Page</title>
+        <title>JSP Page</title>
+    <link rel="stylesheet" type="text/css" href="Style/loginStyle.css">
     </head>
-    <body>
-        <h1>Hello World!</h1>        
+<body background='images/pic1.jpg'>
+    <div class="loginbox" style="height: 530px">
+        
+    <img src="images/loginuser.jpg" class="avatar">
+        <h1>Register Here</h1>
         <form action="<%=request.getContextPath() %>/userController" method="post">
-            <table border="0" width="8" cellspacing="5" cellpadding="5">
-                <tbody>
-                    <tr>
-                        <td>Firstname:</td>
-                        <td><input type="text" name="firstName"/></td>
-                    </tr>
-                    <tr>
-                        <td>Lastname:</td>
-                        <td><input type="text" name="lastName"/></td>
-                    </tr>
-                    <tr>
-                        <td>Username:</td>
-                        <td><input type="text" name="userName"/></td>
-                    </tr>
-                    <tr>
-                        <td>Date of Birth:</td>
-                        <td><input type="date" name="dob"/></td>
-                    </tr>                   
-                </tbody>
-            </table>
-            <input type="submit" value="Register" name="submit"/>
-            <input type="reset" value="Reset" name="reset"/>
+            <p>Firstname</p>
+            <input type="text" name="firstName" placeholder="Enter Firstname">
+			<p>Lasstname</p>
+            <input type="text" name="lastName" placeholder="Enter Lastname">
+			<p>Username</p>
+            <input type="text" name="userName" placeholder="Enter Username">
+			<p>Date of Birth</p>
+            <input type="date" name="dob" placeholder="Enter date of birth">            
+            <input type="submit" value="Register" name="submit">            
+            <a href="loginPage.jsp">Already have an account?</a>
         </form>
         
-    </body>
+    </div>
+
+</body>
 </html>

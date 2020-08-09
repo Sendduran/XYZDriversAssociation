@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Thailan Sendduran
  */
-@WebServlet("/userController")
+//@WebServlet("/userController")
 public class UserController extends HttpServlet {
 
     private UserDao userDao = new UserDao();

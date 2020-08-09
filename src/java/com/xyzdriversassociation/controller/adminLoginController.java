@@ -6,65 +6,55 @@
 package com.xyzdriversassociation.controller;
 
 import com.xyzdriversassociation.dao.LoginDao;
-import com.xyzdriversassociation.model.UserDetails;
+import com.xyzdriversassociation.model.Admin;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Thailan Sendduran
  */
-//@WebServlet("/loginController")
-public class LoginController extends HttpServlet {
+public class adminLoginController extends HttpServlet {
+    
+   private LoginDao loginDao = new LoginDao();
 
-private LoginDao loginDao = new LoginDao();
+
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
 
-        }
     }
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {      
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
-         UserDetails userDetails = new UserDetails();  
-         userDetails.setUserName(username);
-         userDetails.setPassword(password);
-//         System.out.print(username + password);
-        
-         String status = loginDao.authenticate(userDetails);
-         
-         if (status.equals("true")){   
-            HttpSession session = request.getSession();  
-            if(session != null){
-            session.setAttribute("username",username);
-            response.sendRedirect("userHomePage.jsp");                
-            }
-            else{
-            response.sendRedirect("loginPage.jsp?status=sessionError");    
-            }
+         Admin admin = new Admin();  
+         admin.setUsername(username);
+         admin.setPassword(password);
 
+        
+         String status = loginDao.adminAuthenticate(admin);
+         
+         if (status.equals("true")){
+             response.sendRedirect("userHomePage.jsp");
          }
          else if (status.equals("false")){
-             response.sendRedirect("loginPage.jsp?status=false");
+             response.sendRedirect("adminLoginPage.jsp?status=false");
          }
          else {
              response.sendRedirect("loginPage.jsp?status=error");

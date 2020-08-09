@@ -5,34 +5,27 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>`
+<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+    <link rel="stylesheet" type="text/css" href="Style/loginStyle.css">
     </head>
-    <body>
-        <h1>Hello World!</h1>
+<body background='images/pic1.jpg'>
+    <div class="loginbox">
+    <img src="images/loginuser.jpg" class="avatar">
+        <h1>Member Login</h1>
         <form action="<%=request.getContextPath() %>/loginController" method="post">
-            <table border="0">                
-                <tbody>
-                    <tr>
-                        <td>Username</td>
-                        <td>
-                            <input type="text" name="username" value="" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Password</td>
-                        <td>
-                            <input type="password" name="password" value="" />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <input type="submit" value="Login" />
-
+            <p>Username</p>
+            <input type="text" name="username" placeholder="Enter Username">
+            <p>Password</p>
+            <input type="password" name="password" placeholder="Enter Password">
+            <input type="submit" name="" value="Login">            
+            <a href="registerPage.jsp">Don't have an account?</a>
         </form>
         
-    </body>
+    </div>
+
+</body>
 </html>

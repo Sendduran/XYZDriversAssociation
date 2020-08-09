@@ -1,6 +1,6 @@
 <%-- 
-    Document   : loginPage
-    Created on : Aug 7, 2020, 3:15:09 PM
+    Document   : adminLoginPage
+    Created on : Aug 9, 2020, 11:39:23 AM
     Author     : Thailan Sendduran
 --%>
 
@@ -12,17 +12,16 @@
         <title>JSP Page</title>
     <link rel="stylesheet" type="text/css" href="Style/loginStyle.css">
     </head>
-<body background='images/pic1.jpg'>
-    <div class="loginbox">
-    <img src="images/loginuser.jpg" class="avatar">
-        <h1>Member Login</h1>
-        <form action="<%=request.getContextPath() %>/loginController" method="post">
+<body background='images/adminBack.jpg'>
+    <div class="loginbox" style="background: #4d4d4d; height: 350px">
+    <img src="images/adminLogin.jpg" class="avatar">
+        <h1>Admin Login</h1>
+        <form action="<%=request.getContextPath() %>/adminLoginController" method="post">
             <p>Username</p>
             <input type="text" name="username" placeholder="Enter Username">
             <p>Password</p>
             <input type="password" name="password" placeholder="Enter Password">
             <input type="submit" name="" value="Login">            
-            <a href="registerPage.jsp">Don't have an account?</a>
         </form>
         
     </div>

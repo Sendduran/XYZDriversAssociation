@@ -6,6 +6,7 @@
 package com.xyzdriversassociation.dao;
 
 import com.xyzdriversassociation.controller.DatabaseConnection;
+import com.xyzdriversassociation.model.Admin;
 import com.xyzdriversassociation.model.UserDetails;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -47,4 +48,28 @@ public class LoginDao {
         }
         return "error";
     }
-}
+    
+    public String adminAuthenticate(Admin admin){
+        try {
+            String query = "SELECT * FROM ADMIN WHERE USERNAME = ? and PASSWORD = ?";             
+            prestmt = con.prepareStatement(query);
+            
+            prestmt.setString(1, admin.getUsername());
+            prestmt.setString(2, admin.getPassword());
+            
+            rs = prestmt.executeQuery();
+            
+            if (rs.next()){
+                return "true";
+            }
+            else {
+                return "false";
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "error";
+    }
+        
+    }
+
