@@ -27,6 +27,14 @@
         <servlet-name>adminLoginController</servlet-name>
         <url-pattern>/adminLoginController</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>LogoutController</servlet-name>
+        <servlet-class>com.xyzdriversassociation.controller.LogoutController</servlet-class>
+    </servlet>
+        <servlet-mapping>
+        <servlet-name>LogoutController</servlet-name>
+        <url-pattern>/logoutController</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

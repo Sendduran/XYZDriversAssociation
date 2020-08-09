@@ -53,7 +53,7 @@ private LoginDao loginDao = new LoginDao();
          String status = loginDao.authenticate(userDetails);
          
          if (status.equals("true")){   
-            HttpSession session = request.getSession();  
+            HttpSession session = request.getSession();            
             if(session != null){
             session.setAttribute("username",username);
             response.sendRedirect("userHomePage.jsp");                
@@ -61,6 +61,7 @@ private LoginDao loginDao = new LoginDao();
             else{
             response.sendRedirect("loginPage.jsp?status=sessionError");    
             }
+ 
 
          }
          else if (status.equals("false")){
