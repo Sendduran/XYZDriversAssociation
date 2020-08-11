@@ -18,6 +18,9 @@ body{
     box-sizing: border-box;
     padding: 70px 30px;
 }
+body{
+    background: center center no-repeat;
+}
 
 .avatar{
     width: 100px;
@@ -82,6 +85,16 @@ h1{
 .loginbox a:hover
 {
     color: #ffc107;
+}
+
+button{
+    border: none;
+    outline: none;
+    height: 20px;
+    background: #ffb84d;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 15px;
 }
 
 

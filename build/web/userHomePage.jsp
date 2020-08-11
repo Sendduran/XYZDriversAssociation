@@ -22,12 +22,8 @@
             }
             else{
             String data = session.getAttribute("username").toString();
-            }
-            
-        } catch (NullPointerException e) {
-            response.sendRedirect("loginPage.jsp");            
-        }    
-        %>
+            %>
+
          
           
         
@@ -35,11 +31,18 @@
         
       
         <h1>Hello World!</h1>
-        Welcome 
+        Welcome <%=data%>
         <a href="userSamplePage.jsp">sample page</a>
         
         <form action="<%=request.getContextPath() %>/logoutController">
             <input type="submit" value='Logout'>
         </form>
+        <%    
+        }
+            
+        } catch (NullPointerException e) {
+            response.sendRedirect("loginPage.jsp");            
+        }    
+        %>
     </body>
 </html>

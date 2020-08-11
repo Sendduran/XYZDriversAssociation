@@ -41,7 +41,7 @@ public class adminLoginController extends HttpServlet {
             throws ServletException, IOException {
         
         String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String password = request.getParameter("password");        
         
          Admin admin = new Admin();  
          admin.setUsername(username);
@@ -51,7 +51,7 @@ public class adminLoginController extends HttpServlet {
          String status = loginDao.adminAuthenticate(admin);
          
          if (status.equals("true")){
-             response.sendRedirect("userHomePage.jsp");
+             response.sendRedirect("userHomePage.jsp");            
          }
          else if (status.equals("false")){
              response.sendRedirect("adminLoginPage.jsp?status=false");

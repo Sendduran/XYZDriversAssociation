@@ -46,7 +46,7 @@ public class UserDao {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
-    }    
-
+    } 
+    
     
 }

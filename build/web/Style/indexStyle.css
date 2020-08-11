@@ -1,0 +1,59 @@
+.leftside,.rightside{
+    height: 50vh;
+    width: 100%
+}
+@media screen and (min-width:768px){
+    .leftside,.rightside{
+        height: 100vh;
+    }
+}   
+.leftside{
+    background: grey;   
+    left:0;
+    background: url('../images/adminIndex.jpg') center center no-repeat;
+    background-size: cover;
+}
+.rightside{
+    
+    right:0;
+    background: url('../images/driverLogin.jpg') center center no-repeat;
+    background-size: cover;
+}
+h1 {
+  font-size: 4rem;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.button {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  height: 5rem;
+  padding-top: 1.5rem;
+  width: 15rem;
+  text-align: center;
+  color: #fff;
+  border: #fff solid 0.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  transform: translateX(-50%);
+}
+
+.button:hover{
+    cursor: pointer;
+    background: #f5f0f0;
+    color: #000;
+}
+a:hover{
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}

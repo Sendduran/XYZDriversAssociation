@@ -12,10 +12,11 @@
         <title>JSP Page</title>
     <link rel="stylesheet" type="text/css" href="Style/loginStyle.css">
     </head>
-<body background='images/adminBack.jpg'>
+<body style="background:url('images/adminBack.jpg')">
     <div class="loginbox" style="background: #4d4d4d; height: 350px">
     <img src="images/adminLogin.jpg" class="avatar">
         <h1>Admin Login</h1>
+        
         <form action="<%=request.getContextPath() %>/adminLoginController" method="post">
             <p>Username</p>
             <input type="text" name="username" placeholder="Enter Username">

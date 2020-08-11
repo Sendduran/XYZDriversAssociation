@@ -8,16 +8,10 @@ package com.xyzdriversassociation.controller;
 import com.xyzdriversassociation.dao.UserDao;
 import com.xyzdriversassociation.model.UserDetails;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Random;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -55,7 +49,8 @@ public class UserController extends HttpServlet {
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String userName = request.getParameter("userName");
-        String dob = request.getParameter("dob");        
+        String dob = request.getParameter("dob");
+        String password = request.getParameter("password");
         
         
         UserDetails userDetails = new UserDetails();        
@@ -63,7 +58,7 @@ public class UserController extends HttpServlet {
         userDetails.setLastName(lastName);
         userDetails.setUserName(userName);
         userDetails.setDob(dob);
-        userDetails.setPassword(randomPassword());
+        userDetails.setPassword(password);
         userDetails.setDoc(today());
         userDetails.setAccountStatus("Normal");
         
@@ -80,18 +75,6 @@ public class UserController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
     
-    private String randomPassword()
-    {
-        Random rand = new Random();
-        String password = "";
-        for(int i = 10; i>0; i--)
-        {
-            int  n =rand.nextInt((126 - 33) + 1) +33;
-            password+= (char)n;
-        }
-        
-       return password;
-    }
     
     private String today(){
         Date today = new Date();

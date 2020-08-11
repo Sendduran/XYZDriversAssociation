@@ -54,6 +54,7 @@ public class LoginDao {
             String query = "SELECT * FROM ADMIN WHERE USERNAME = ? and PASSWORD = ?";             
             prestmt = con.prepareStatement(query);
             
+            
             prestmt.setString(1, admin.getUsername());
             prestmt.setString(2, admin.getPassword());
             

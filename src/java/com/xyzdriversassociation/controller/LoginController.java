@@ -42,20 +42,11 @@ private LoginDao loginDao = new LoginDao();
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        
-         UserDetails userDetails = new UserDetails();  
-         userDetails.setUserName(username);
-         userDetails.setPassword(password);
-//         System.out.print(username + password);
-        
-         String status = loginDao.authenticate(userDetails);
-         
-         if (status.equals("true")){   
-            HttpSession session = request.getSession();            
-            if(session != null){
-            session.setAttribute("username",username);
+
+    
+            HttpSession session = request.getSession();
+            
+            if(session.getAttribute("username") != null){            
             response.sendRedirect("userHomePage.jsp");                
             }
             else{
@@ -63,13 +54,7 @@ private LoginDao loginDao = new LoginDao();
             }
  
 
-         }
-         else if (status.equals("false")){
-             response.sendRedirect("loginPage.jsp?status=false");
-         }
-         else {
-             response.sendRedirect("loginPage.jsp?status=error");
-         }
+ 
     }
 
 
