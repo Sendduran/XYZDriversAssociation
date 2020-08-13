@@ -16,13 +16,12 @@
         <% 
         response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
         try {
-            if (session.getAttribute("username")==null){
-            System.out.print("i dont have a username");
+            if (session.getAttribute("username")==null){            
             response.sendRedirect("loginPage.jsp");            
             }
             else{
             String data = session.getAttribute("username").toString();
-            %>
+        %>
 
          
           

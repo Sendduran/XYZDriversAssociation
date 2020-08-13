@@ -1,0 +1,33 @@
+create table Users(
+user_id int primary key generated always as identity,
+username varchar(45) not null,
+password varchar(45) not null,
+firstname varchar(45) not null,
+lastname varchar(45) not null,
+dob varchar(10) not null,
+doc varchar(10) not null,
+Status varchar(10) not null);
+
+create table admin(
+user_id int primary key generated always as identity,
+username varchar(45) not null,
+password varchar(45) not null);
+
+create table Payment(
+Payment_id int primary key generated always as identity,
+User_id int,
+Payment_type varchar(10) not null,
+Payment_date varchar(10) not null,
+Amount double not null,
+FOREIGN KEY (User_id) References USERS (USER_ID)
+);
+
+create table Claims(
+Claim_id int primary key generated always as identity,
+User_id int,
+Claim_req varchar(256) not null,
+Claim_date varchar(10) not null,
+Claim_amount double not null,
+Claim_status varchar(4) not null,
+FOREIGN KEY (user_id) References USERS (USER_ID)
+);

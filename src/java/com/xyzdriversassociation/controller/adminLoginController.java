@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -35,30 +36,20 @@ public class adminLoginController extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");        
-        
-         Admin admin = new Admin();  
-         admin.setUsername(username);
-         admin.setPassword(password);
-
-        
-         String status = loginDao.adminAuthenticate(admin);
-         
-         if (status.equals("true")){
-             response.sendRedirect("userHomePage.jsp");            
-         }
-         else if (status.equals("false")){
-             response.sendRedirect("adminLoginPage.jsp?status=false");
-         }
-         else {
-             response.sendRedirect("loginPage.jsp?status=error");
-         }
+            HttpSession session = request.getSession();
+           
+            
+            if(session.getAttribute("username") != null){            
+            response.sendRedirect("userHomePage.jsp");                
+            }
+            else{
+            response.sendRedirect("loginPage.jsp?status=sessionError");    
+            }
     }
 
 

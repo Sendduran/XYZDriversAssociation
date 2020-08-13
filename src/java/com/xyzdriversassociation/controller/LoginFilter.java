@@ -44,8 +44,9 @@ public class LoginFilter implements Filter {
 
     public void doFilter(ServletRequest request, ServletResponse response,FilterChain chain)
             throws IOException, ServletException {
-         String username = request.getParameter("username");
+        String username = request.getParameter("username");
         String password = request.getParameter("password");
+        
         
          UserDetails userDetails = new UserDetails();  
          userDetails.setUserName(username);
