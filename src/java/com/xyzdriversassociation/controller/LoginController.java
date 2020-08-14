@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
 //@WebServlet("/loginController")
 public class LoginController extends HttpServlet {
 
-private LoginDao loginDao = new LoginDao();
+
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
