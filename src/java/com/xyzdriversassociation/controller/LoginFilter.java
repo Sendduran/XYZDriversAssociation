@@ -8,9 +8,6 @@ package com.xyzdriversassociation.controller;
 import com.xyzdriversassociation.dao.LoginDao;
 import com.xyzdriversassociation.model.UserDetails;
 import java.io.IOException;
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -28,7 +25,7 @@ import javax.servlet.http.HttpSession;
 public class LoginFilter implements Filter {
     
     private static final boolean debug = true;
-    private LoginDao loginDao = new LoginDao();
+    private final LoginDao loginDao = new LoginDao();
 
     // The filter configuration object we are associated with.  If
     // this value is null, this filter instance is not currently
@@ -41,7 +38,7 @@ public class LoginFilter implements Filter {
     
 
 
-
+    @Override
     public void doFilter(ServletRequest request, ServletResponse response,FilterChain chain)
             throws IOException, ServletException {
         String username = request.getParameter("username");
@@ -59,7 +56,8 @@ public class LoginFilter implements Filter {
          
         if (status.equals("true")){   
             HttpSession session = req.getSession();               
-            session.setAttribute("username",username);
+            session.setAttribute("username",userDetails.getUserName());
+            session.setAttribute("userId", userDetails.getUser_id());
             chain.doFilter(request, response);
          }
          else if (status.equals("false")){
@@ -73,6 +71,7 @@ public class LoginFilter implements Filter {
 
     /**
      * Return the filter configuration object for this filter.
+     * @return 
      */
     public FilterConfig getFilterConfig() {
         return (this.filterConfig);
@@ -88,10 +87,12 @@ public class LoginFilter implements Filter {
     }
 
   
+    @Override
     public void destroy() {        
     }
 
   
+    @Override
     public void init(FilterConfig filterConfig) {        
         this.filterConfig = filterConfig;
         if (filterConfig != null) {

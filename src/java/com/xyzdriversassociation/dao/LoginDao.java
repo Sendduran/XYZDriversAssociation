@@ -29,7 +29,7 @@ public class LoginDao {
     
     public String authenticate(UserDetails userdetails){
         try {
-            String query = "SELECT * FROM USERS WHERE USERNAME = ? and PASSWORD = ?";             
+            String query = "SELECT USER_ID,USERNAME FROM USERS WHERE USERNAME = ? and PASSWORD = ?";             
             prestmt = con.prepareStatement(query);
             
             prestmt.setString(1, userdetails.getUserName());
@@ -38,6 +38,8 @@ public class LoginDao {
             rs = prestmt.executeQuery();
             
             if (rs.next()){
+                userdetails.setUserName(rs.getString("USERNAME"));
+                userdetails.setUser_id(Integer.parseInt(rs.getString("USER_ID")));
                 return "true";
             }
             else {
@@ -47,11 +49,11 @@ public class LoginDao {
             Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "error";
+   
     }
-    
     public String adminAuthenticate(Admin admin){
         try {
-            String query = "SELECT * FROM ADMIN WHERE USERNAME = ? and PASSWORD = ?";             
+            String query = "SELECT USER_ID,USERNAME FROM ADMIN WHERE USERNAME = ? and PASSWORD = ?";             
             prestmt = con.prepareStatement(query);
             
             
@@ -61,6 +63,8 @@ public class LoginDao {
             rs = prestmt.executeQuery();
             
             if (rs.next()){
+                admin.setUsername(rs.getString("USERNAME"));
+                admin.setUser_id(Integer.parseInt(rs.getString("USER_ID")));
                 return "true";
             }
             else {

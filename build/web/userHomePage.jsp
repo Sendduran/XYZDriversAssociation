@@ -20,7 +20,8 @@
             response.sendRedirect("loginPage.jsp");            
             }
             else{
-            String data = session.getAttribute("username").toString();
+            String username = session.getAttribute("username").toString();
+            String userId = session.getAttribute("userId").toString();
         %>
 
          
@@ -30,7 +31,7 @@
         
       
         <h1>Hello World!</h1>
-        Welcome <%=data%>
+        Welcome <%=username + Integer.parseInt(userId)%>
         <a href="userSamplePage.jsp">sample page</a>
         
         <form action="<%=request.getContextPath() %>/logoutController">

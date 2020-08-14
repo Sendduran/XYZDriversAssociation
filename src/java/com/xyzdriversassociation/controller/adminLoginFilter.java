@@ -51,7 +51,8 @@ public class adminLoginFilter implements Filter {
          
          if (status.equals("true")){
             HttpSession session = req.getSession();               
-            session.setAttribute("username",username);
+            session.setAttribute("username",admin.getUsername());
+            session.setAttribute("userId", admin.getUser_id());
             chain.doFilter(request, response);
                          
          }
