@@ -9,12 +9,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Filter the table using Search Box</title>
+
+    <meta charset="UTF-8">
+    <title>Filter the table using Search Box</title>
   <link rel="stylesheet" href="annualturnover_style.css">
-  <script src="scripts.js"></script>
-</head>
-<body>
+  <script src="script02.js"></script>
+  </head>
+  <body>
 
 
 <div class="wrapper">

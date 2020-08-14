@@ -24,12 +24,6 @@
             String userId = session.getAttribute("userId").toString();
         %>
 
-         
-          
-        
-                 
-        
-      
         <h1>Hello World!</h1>
         Welcome <%=username + Integer.parseInt(userId)%>
         <a href="userSamplePage.jsp">sample page</a>

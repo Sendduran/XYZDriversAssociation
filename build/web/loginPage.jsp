@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="Style/loginStyle.css">
     </head>
 <body style="background: url('images/pic1.jpg')">
+    
     <div class="loginbox">
     <img src="images/loginuser.jpg" class="avatar">
         <h1>Member Login</h1>
