@@ -47,7 +47,7 @@ private LoginDao loginDao = new LoginDao();
             HttpSession session = request.getSession();
             
             if(session.getAttribute("username") != null){            
-            response.sendRedirect("userHomePage.jsp");                
+            response.sendRedirect("UserDashboard.jsp");                
             }
             else{
             response.sendRedirect("loginPage.jsp?status=sessionError");    

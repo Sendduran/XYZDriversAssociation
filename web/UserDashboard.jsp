@@ -20,6 +20,16 @@
     <title>User Dashboard</title>
   </head>
   <body>
+            <% 
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        try {
+            if (session.getAttribute("username")==null){            
+            response.sendRedirect("loginPage.jsp");            
+            }
+            else{
+            String username = session.getAttribute("username").toString();
+            String userId = session.getAttribute("userId").toString();
+        %>
     
     <!-- navbar -->
     <nav class="navbar navbar-expand-md navbar-light">
@@ -56,7 +66,11 @@
                 </div>
                 <div class="col-md-3">
                   <ul class="navbar-nav">                   
-                    <li class="nav-item ml-md-auto"><a href="#" class="nav-link" data-toggle="modal" data-target="#sign-out"><i class="fas fa-sign-out-alt text-danger fa-lg"></i></a></li>
+                    <li class="nav-item ml-md-auto">
+                        <form action="<%=request.getContextPath() %>/logoutController">
+                    <input type="submit" value='Logout'>
+                    </form>
+                   </li>
                   </ul>
                 </div>
               </div>
@@ -290,7 +304,13 @@
     </section>
     <!-- end of tables -->
    
-
+            <%    
+        }
+            
+        } catch (NullPointerException e) {
+            response.sendRedirect("loginPage.jsp");            
+        }    
+        %>
   
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

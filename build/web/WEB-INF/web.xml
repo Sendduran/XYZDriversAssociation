@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	 version="3.1">
     <filter>
         <filter-name>LoginFilter</filter-name>
         <filter-class>com.xyzdriversassociation.controller.LoginFilter</filter-class>
     </filter>
-    <filter>
-        <filter-name>adminLoginFilter</filter-name>
-        <filter-class>com.xyzdriversassociation.controller.adminLoginFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>adminLoginFilter</filter-name>
-        <servlet-name>adminLoginController</servlet-name>
-    </filter-mapping>
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
         <servlet-name>LoginController</servlet-name>
@@ -32,7 +27,7 @@
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/loginController</url-pattern>
     </servlet-mapping>
-    <servlet>
+     <servlet>
         <servlet-name>adminLoginController</servlet-name>
         <servlet-class>com.xyzdriversassociation.controller.adminLoginController</servlet-class>
     </servlet>
@@ -44,7 +39,7 @@
         <servlet-name>LogoutController</servlet-name>
         <servlet-class>com.xyzdriversassociation.controller.LogoutController</servlet-class>
     </servlet>
-    <servlet-mapping>
+        <servlet-mapping>
         <servlet-name>LogoutController</servlet-name>
         <url-pattern>/logoutController</url-pattern>
     </servlet-mapping>
@@ -54,3 +49,4 @@
         </session-timeout>
     </session-config>
 </web-app>
+
