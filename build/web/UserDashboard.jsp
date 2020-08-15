@@ -4,6 +4,12 @@
     Author     : Azka
 --%>
 
+<%@page import="com.xyzdriversassociation.controller.UserFunction"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="com.xyzdriversassociation.controller.DatabaseConnection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -243,56 +249,84 @@
             <div class="row align-items-center">
               <div class="col-xl-6 col-12 mb-4 mb-xl-0">
                 <h3 class="text-muted text-center mb-3"><i>Transaction History</i></h3>
+                
                 <table class="table table-striped bg-light text-center">
                   <thead>
                     <tr class="text-muted">
-                      <th>#</th>
-                      <th>Name</th>
-                      <th>Salary</th>
-
-                      <th>Contact</th>
+                      <th>Payment ID</th>
+                      <th>Payment Type</th>
+                      <th>Payment Date</th>
+                      <th>Payment_Date</th>
+                      
                     </tr>
                   </thead>
                   <tbody>
+                     <%
+                                        
+                  String userID = session.getAttribute("userId").toString();                    
+                  UserFunction userFunction = new UserFunction();
+                  ResultSet rs = userFunction.claimHistory(Integer.parseInt(userID));
+                   
+     while(rs.next()){ %>
                     <tr>
-                      <th>1</th>
-                      <td>John</td>
-                      <td>$2000</td>
-                    
-                      <td><button type="button" class="btn btn-info btn-sm">Message</button></td>
+                      <td><%=rs.getInt("CLAIM_ID")%></td>
+                      <td><%=rs.getString("CLAIM_REQ")%></td>
+                      <td><%=rs.getString("CLAIM_DATE")%></td>
+                      <td><%=rs.getDouble("CLAIM_AMOUNT")%></td>
+                                              
+                    </tr>
                   </tbody>
+                  <%
+                      }
+                  %>
                 </table>
+                  <%
+                    rs.close();
+
+                  %>
+                 
  
  
                 <!-- table 04- Annual turnover -->
               </div>
               <div class="col-xl-6 col-12">
                 <h3 class="text-muted text-center mb-3"><i>Claim Status</i></h3>
+
                 <table class="table table-dark table-hover text-center">
                   <thead>
                     <tr class="text-muted">
-                      <th>#</th>
-                      <th>Name</th>
-                      <th>Address</th>
-                      <th>DOB</th>
-                      <th>DOR</th>
-                      <th>Balance</th>
-                      <th>Status</th>
+                      <th>ClaimID</th>
+                      <th>ClaimRequest</th>
+                      <th>ClaimDate</th>
+                      <th>ClaimAmount</th> 
+                      <th>ClaimStatus</th>
+                      
                     </tr>
                   </thead>
                   <tbody>
+             <%
+                                        
+                  userID = session.getAttribute("userId").toString();                    
+                  userFunction = new UserFunction();
+                  rs = userFunction.claimHistory(Integer.parseInt(userID));
+                   
+     while(rs.next()){ %>
                     <tr>
-                      <th>1</th>
-                      <td>Monica</td>
-                      <td>NewYork</td>
-                      <td>25/05/1995</td>
-                      <td>25/05/2020</td>
-                      <td>$20</td>
-                      <td><span class="badge badge-success w-75 py-2">Approved</span></td>
+                      <td><%=rs.getInt("CLAIM_ID")%></td>
+                      <td><%=rs.getString("CLAIM_REQ")%></td>
+                      <td><%=rs.getString("CLAIM_DATE")%></td>
+                      <td><%=rs.getDouble("CLAIM_AMOUNT")%></td>
+                      <td><%=rs.getString("CLAIM_STATUS")%></td>                          
                     </tr>
                   </tbody>
+                  <%
+                      }
+                  %>
                 </table>
-                 
+                  <%
+                    rs.close();
+
+                  %>
                  
                      <br></br>
 
