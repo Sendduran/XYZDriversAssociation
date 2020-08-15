@@ -37,4 +37,16 @@ public class UserFunction {
         }
          return rs;          
      }
+     
+     public ResultSet transactionHistory(int userId){
+        try {
+            String query = "SELECT * FROM PAYMENT WHERE USER_ID="+userId;
+            
+            stmt = con.createStatement();                
+            rs = stmt.executeQuery(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(UserFunction.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         return rs;          
+     }     
 }

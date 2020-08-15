@@ -256,7 +256,7 @@
                       <th>Payment ID</th>
                       <th>Payment Type</th>
                       <th>Payment Date</th>
-                      <th>Payment_Date</th>
+                      <th>Amount</th>
                       
                     </tr>
                   </thead>
@@ -265,14 +265,14 @@
                                         
                   String userID = session.getAttribute("userId").toString();                    
                   UserFunction userFunction = new UserFunction();
-                  ResultSet rs = userFunction.claimHistory(Integer.parseInt(userID));
+                  ResultSet rs = userFunction.transactionHistory(Integer.parseInt(userID));
                    
      while(rs.next()){ %>
                     <tr>
-                      <td><%=rs.getInt("CLAIM_ID")%></td>
-                      <td><%=rs.getString("CLAIM_REQ")%></td>
-                      <td><%=rs.getString("CLAIM_DATE")%></td>
-                      <td><%=rs.getDouble("CLAIM_AMOUNT")%></td>
+                      <td><%=rs.getInt("PAYMENT_ID")%></td>
+                      <td><%=rs.getString("PAYMENT_TYPE")%></td>
+                      <td><%=rs.getString("PAYMENT_DATE")%></td>
+                      <td><%=rs.getDouble("AMOUNT")%></td>
                                               
                     </tr>
                   </tbody>
