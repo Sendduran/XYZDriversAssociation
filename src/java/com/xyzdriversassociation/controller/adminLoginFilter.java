@@ -60,9 +60,8 @@ public class adminLoginFilter implements Filter {
              res.sendRedirect("adminLoginPage.jsp?status=false");
          }
          else {
-             res.sendRedirect("loginPage.jsp?status=error");
-        } 
-       
+             res.sendRedirect("adminLoginPage.jsp?status=error");
+        }        
     }
 
     public FilterConfig getFilterConfig() {

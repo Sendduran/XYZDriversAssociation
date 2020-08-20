@@ -45,10 +45,10 @@ public class adminLoginController extends HttpServlet {
            
             
             if(session.getAttribute("username") != null){            
-            response.sendRedirect("userHomePage.jsp");                
+            response.sendRedirect("AdminDashboard.jsp");                
             }
             else{
-            response.sendRedirect("loginPage.jsp?status=sessionError");    
+            response.sendRedirect("adminLoginPage.jsp?status=sessionError");    
             }
     }
 
