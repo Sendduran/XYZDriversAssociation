@@ -4,7 +4,7 @@
     Author     : Azka
 --%>
 
-<%@page import="com.xyzdriversassociation.controller.UserFunction"%>
+<%@page import="com.xyzdriversassociation.dao.UserFunctionDAO"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -26,7 +26,7 @@
     <title>User Dashboard</title>
   </head>
   <body>
-            <% 
+        <% 
         response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
         try {
             if (session.getAttribute("username")==null){            
@@ -35,6 +35,11 @@
             else{
             String username = session.getAttribute("username").toString();
             String userId = session.getAttribute("userId").toString();
+        %>
+        <% 
+        String userID = session.getAttribute("userId").toString();                    
+        UserFunctionDAO userFunction = new UserFunctionDAO();
+        ResultSet rs;
         %>
     
     <!-- navbar -->
@@ -50,7 +55,10 @@
               <a href="#" class="navbar-brand text-white d-block mx-auto text-center py-3 mb-4 bottom-border">XYZDriversAssociation</a>
               <div class="bottom-border pb-3">
                 <img src="images/admin.jpeg" width="50" class="rounded-circle mr-3">
-                <a href="#" class="text-white">USER</a>
+                <%
+                String name = userFunction.userFullName(Integer.parseInt(userID));               
+                %>
+                <a href="#" class="text-white"><%=name%></a>
               </div>
               <ul class="navbar-nav flex-column mt-4">
                 <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 current"><i class="fas fa-home text-light fa-lg mr-3"></i>Dashboard</a></li>
@@ -89,23 +97,7 @@
     <!-- end of navbar -->
 
     <!-- modal -->
-    <div class="modal fade" id="sign-out">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Want to leave?</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <div class="modal-body">
-            Press logout to leave
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal">Stay Here</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Logout</button>
-          </div>
-        </div>
-      </div>
-    </div>
+
     <!-- end of modal -->
 
     <section>
@@ -181,25 +173,33 @@
           <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
             <div class="row align-items-center">
               <div class="col-xl-6 col-12 mb-4 mb-xl-0">
-                <h3 class="text-muted text-center mb-3"><i>Total Claims & <br> Outstanding balance</i></h3>
+                <h3 class="text-muted text-center mb-3"><i>Outstanding Claims</i></h3>
                 <table class="table table-striped bg-light text-center">
                   <thead>
                     <tr class="text-muted">
-                      <th>#</th>
-                      <th>Name</th>
-                      <th>Salary</th>
-
-                      <th>Contact</th>
+                        <th>Claim Id</th>
+                        <th>Claim Date</th>
+                        <th>Amount</th>
+                    <th></th>
                     </tr>
+
                   </thead>
+                    <%
+                    rs = userFunction.getOutstandingClaim(Integer.parseInt(userID));                   
+                    while(rs.next()){
+                    %>
                   <tbody>
                     <tr>
-                      <th>1</th>
-                      <td>John</td>
-                      <td>$2000</td>
+                      <th><%=rs.getInt("CLAIM_ID")%></th>
+                      <td><%=rs.getString("CLAIM_DATE")%></td>
+                      <td><%=rs.getDouble("CLAIM_AMOUNT")%></td>
                     
-                      <td><button type="button" class="btn btn-info btn-sm">Message</button></td>
+                      <td><button type="button" class="btn btn-info btn-sm">Pay</button></td>
                   </tbody>
+                  <%
+                  }
+                  rs.close();
+                  %>
                 </table>
 
                
@@ -215,16 +215,16 @@
                 <h3 class="text-muted text-center mb-3"><i>Claims Description</i></h3>
                  
                 <!-- Default form subscription -->
-                   <form class="text-center border border-light p-5" action="#!">
+                <form class="text-center border border-light p-5" action="<%=request.getContextPath()%>/claimRequest" method="post">
 
                     <p class="h4 mb-4">Fill the form and submit us.</p>                   
 
                     <!-- Email -->
                     
-                     <textarea id="w3review" name="w3review" rows="4" cols="55" placeholder="Claim Description"></textarea>
+                    <textarea id="w3review" name="claimDescription" rows="4" cols="70" placeholder="Claim Description" required></textarea>
 					 <br><br>
                     <!-- Name -->
-                   <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4" placeholder="Amount">
+                    <input type="number" id="defaultSubscriptionFormPassword" class="form-control mb-4" name="amount" placeholder="Amount" required>
                     <!-- Sign in button -->
                     <button class="btn btn-info btn-block" type="submit">Send Claim Request</button>
                    </form>
@@ -261,12 +261,8 @@
                     </tr>
                   </thead>
                   <tbody>
-                     <%
-                                        
-                  String userID = session.getAttribute("userId").toString();                    
-                  UserFunction userFunction = new UserFunction();
-                  ResultSet rs = userFunction.transactionHistory(Integer.parseInt(userID));
-                   
+                     <%                                        
+                   rs = userFunction.transactionHistory(Integer.parseInt(userID));                   
      while(rs.next()){ %>
                     <tr>
                       <td><%=rs.getInt("PAYMENT_ID")%></td>
@@ -305,10 +301,7 @@
                   </thead>
                   <tbody>
              <%
-                                        
-                  userID = session.getAttribute("userId").toString();                    
-                  userFunction = new UserFunction();
-                  rs = userFunction.claimHistory(Integer.parseInt(userID));
+                 rs = userFunction.claimHistory(Integer.parseInt(userID));
                    
      while(rs.next()){ %>
                     <tr>

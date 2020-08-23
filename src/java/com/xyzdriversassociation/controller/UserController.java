@@ -37,7 +37,7 @@ public class UserController extends HttpServlet {
 
         @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException {      
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/registerPage.jsp");
         dispatcher.forward(request, response);
     }

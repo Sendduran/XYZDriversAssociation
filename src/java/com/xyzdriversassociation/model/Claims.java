@@ -13,16 +13,34 @@ import java.util.Date;
  */
 public class Claims {
     int claimId;
+    int userId;
     String claimRequest;
-    Date claimDate;
-    boolean claimStatus;
+    String claimDate;
+    String claimStatus;
+    double amount;
 
-    public Claims(int claimId, String claimRequest, Date claimDate, boolean claimStatus) {
-        this.claimId = claimId;
+
+
+    public Claims(int userId,String claimRequest, String claimDate, String claimStatus,double amount) {
+        this.userId = userId;
         this.claimRequest = claimRequest;
         this.claimDate = claimDate;
         this.claimStatus = claimStatus;
+        this.amount = amount;
     }
+
+    public Claims() {
+        
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }    
+    
 
     public int getClaimId() {
         return claimId;
@@ -40,21 +58,27 @@ public class Claims {
         this.claimRequest = claimRequest;
     }
 
-    public Date getClaimDate() {
+    public String getClaimDate() {
         return claimDate;
     }
 
-    public void setClaimDate(Date claimDate) {
+    public void setClaimDate(String claimDate) {
         this.claimDate = claimDate;
     }
 
-    public boolean isClaimStatus() {
+    public String getClaimStatus() {
         return claimStatus;
     }
 
-    public void setClaimStatus(boolean claimStatus) {
+    public void setClaimStatus(String claimStatus) {
         this.claimStatus = claimStatus;
     }
-    
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
     
 }

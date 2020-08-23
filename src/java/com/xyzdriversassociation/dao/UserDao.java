@@ -2,7 +2,7 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+*/
 package com.xyzdriversassociation.dao;
 
 import com.xyzdriversassociation.controller.DatabaseConnection;
@@ -32,7 +32,7 @@ public class UserDao {
         try {
             String query = "INSERT INTO USERS"+"(USERNAME,PASSWORD,FIRSTNAME,LASTNAME,DOB,DOC,STATUS)VALUES"+" (?,?,?,?,?,?,?)";
             
-                prestmt = con.prepareStatement(query);            
+            prestmt = con.prepareStatement(query);            
             prestmt.setString(1, userDetails.getUserName());
             prestmt.setString(2,userDetails.getPassword());
             prestmt.setString(3,userDetails.getFirstName());

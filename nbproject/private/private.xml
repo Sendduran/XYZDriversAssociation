@@ -3,18 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Hp/Documents/GitHub/XYZDriversAssociation/web/memberCredential.jsp</file>
-            <file>file:/C:/Users/Hp/Documents/GitHub/XYZDriversAssociation/web/registerPage.jsp</file>
-            <file>file:/C:/Users/Hp/Documents/GitHub/XYZDriversAssociation/src/java/com/xyzdriversassociation/controller/DatabaseConnection.java</file>
-            <file>file:/C:/Users/Hp/Documents/GitHub/XYZDriversAssociation/web/UserDashboard.jsp</file>
-            <file>file:/C:/Users/Hp/Documents/GitHub/XYZDriversAssociation/src/java/com/xyzdriversassociation/controller/UserController.java</file>
-            <file>file:/C:/Users/Hp/Documents/GitHub/XYZDriversAssociation/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/Hp/Documents/GitHub/XYZDriversAssociation/web/Scripts/script.js</file>
-            <file>file:/C:/Users/Hp/Documents/GitHub/XYZDriversAssociation/src/java/com/xyzdriversassociation/controller/adminLoginController.java</file>
-            <file>file:/C:/Users/Hp/Documents/GitHub/XYZDriversAssociation/build/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/Hp/Documents/GitHub/XYZDriversAssociation/web/adminLoginPage.jsp</file>
-            <file>file:/C:/Users/Hp/Documents/GitHub/XYZDriversAssociation/src/java/com/xyzdriversassociation/dao/LoginDao.java</file>
-            <file>file:/C:/Users/Hp/Documents/GitHub/XYZDriversAssociation/src/java/com/xyzdriversassociation/dao/UserDao.java</file>
+            <file>file:/E:/NorthShore/SWE%20%203/Enterprise%20System%20Dev/Coursework%2001%20Group%20Project/sourcecode/XYZDriversAssociation/web/UserDashboard.jsp</file>
+            <file>file:/E:/NorthShore/SWE%20%203/Enterprise%20System%20Dev/Coursework%2001%20Group%20Project/sourcecode/XYZDriversAssociation/web/AdminDashboard.jsp</file>
+            <file>file:/E:/NorthShore/SWE%20%203/Enterprise%20System%20Dev/Coursework%2001%20Group%20Project/sourcecode/XYZDriversAssociation/src/java/com/xyzdriversassociation/controller/searchUser.java</file>
+            <file>file:/E:/NorthShore/SWE%20%203/Enterprise%20System%20Dev/Coursework%2001%20Group%20Project/sourcecode/XYZDriversAssociation/src/java/com/xyzdriversassociation/controller/UserController.java</file>
         </group>
     </open-files>
 </project-private>
