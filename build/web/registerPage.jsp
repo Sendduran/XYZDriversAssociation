@@ -21,7 +21,7 @@
                 <p>Firstname</p>
                 <input type="text" name="firstName" placeholder="Enter Firstname" required>
                 <p>Lasstname</p>
-                <input type="text" name="lastName" placeholder="Enter Lastname" required>
+                <input type="text" name="lastName" placeholder="Enter Lastname" required>                
                 <p>Username</p>
                 <input type="text" name="userName" placeholder="Enter Username" required>
                 <p>Date of Birth</p>

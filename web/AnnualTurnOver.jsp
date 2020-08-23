@@ -12,7 +12,7 @@
 
     <meta charset="UTF-8">
     <title>Filter the table using Search Box</title>
-  <link rel="stylesheet" href="annualturnover_style.css">
+  <link rel="stylesheet" href="Style/annualturnover_style.css">
   <script src="script02.js"></script>
   </head>
   <body>
@@ -21,7 +21,7 @@
 <div class="wrapper">
   <div class="header">
     <div class="title">
-      Customer Claims
+      Annual Turn Over
     </div>
 
     <div class="search_box">
