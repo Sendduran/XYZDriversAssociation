@@ -130,7 +130,7 @@
                     <div class="d-flex justify-content-between">
                       <i class="fas fa-users fa-3x text-info"></i>
                       <div class="text-right text-secondary">
-                        <h5>Claim Request<br>(Accepted/Declined)</h5>
+                        <h5>Claim Request</h5>
                       
                       </div>
                     </div>
@@ -174,24 +174,7 @@
                     <button class="btn btn-info btn-block" type="submit">Search</button>
                     <br>
                     </form>
-                <table class="table table-striped bg-light text-center">
-                  <thead>
-                    <tr class="text-muted">
-                      <th>#</th>
-                      <th>First Name</th>
-                      <th>Last Name</th>
-                      <th>Status</th>                    
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th>1</th>
-                      <td></td>
-                      <td></td>
-                    
-                      <td><button type="button" class="btn btn-info btn-sm">Message</button></td>
-                  </tbody>
-                </table>
+
 
                
                 

@@ -76,10 +76,11 @@ public class UserController extends HttpServlet {
     }// </editor-fold>
     
     
-    private String today(){
+    private java.sql.Date today(){
         Date today = new Date();
         SimpleDateFormat dateForamater = new SimpleDateFormat("yyyy-MM-dd");
-        String dateToday = dateForamater.format(today);
-        return dateToday;
+//        String dateToday = dateForamater.format(today);
+        java.sql.Date sqlDate = new java.sql.Date(today.getTime());
+        return sqlDate;
     }
 }

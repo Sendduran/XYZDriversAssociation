@@ -12,24 +12,29 @@ import java.util.Date;
  * @author Thailan Sendduran
  */
 public class Payment {
-    int PaymentId;
+    int paymentId;
+    int userId;
     String paymentType;
-    Date paymentDate;
-    float amount;
+    String paymentDate;
+    Double amount;
 
-    public Payment(int PaymentId, String paymentType, Date paymentDate, float amount) {
-        this.PaymentId = PaymentId;
+    public Payment(int paymentId, String paymentType, String paymentDate, Double amount) {
+        this.paymentId = paymentId;
         this.paymentType = paymentType;
         this.paymentDate = paymentDate;
         this.amount = amount;
     }
 
+    public Payment() {
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getPaymentId() {
-        return PaymentId;
+        return paymentId;
     }
 
     public void setPaymentId(int PaymentId) {
-        this.PaymentId = PaymentId;
+        this.paymentId = PaymentId;
     }
 
     public String getPaymentType() {
@@ -40,20 +45,28 @@ public class Payment {
         this.paymentType = paymentType;
     }
 
-    public Date getPaymentDate() {
+    public String getPaymentDate() {
         return paymentDate;
     }
 
-    public void setPaymentDate(Date paymentDate) {
+    public void setPaymentDate(String paymentDate) {
         this.paymentDate = paymentDate;
     }
 
-    public float getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
     
     

@@ -5,7 +5,7 @@ password varchar(45) not null,
 firstname varchar(45) not null,
 lastname varchar(45) not null,
 dob varchar(10) not null,
-doc varchar(10) not null,
+doc DATE not null,
 Status varchar(10) not null);
 
 create table admin(

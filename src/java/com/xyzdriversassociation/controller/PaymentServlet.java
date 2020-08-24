@@ -4,17 +4,13 @@
  * and open the template in the editor.
  */
 package com.xyzdriversassociation.controller;
-
 import com.xyzdriversassociation.dao.UserFunctionDAO;
 import com.xyzdriversassociation.model.Claims;
+import com.xyzdriversassociation.model.Payment;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,8 +22,10 @@ import javax.servlet.http.HttpSession;
  *
  * @author Thailan Sendduran
  */
-public class claimRequest extends HttpServlet {
+public class PaymentServlet extends HttpServlet {
 
+    
+    private UserFunctionDAO userFunction = new UserFunctionDAO();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -40,8 +38,18 @@ public class claimRequest extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Payment</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Payment at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -70,43 +78,24 @@ public class claimRequest extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            HttpSession session = request.getSession();
-            String userId = session.getAttribute("userId").toString();
-            String claimDescription = request.getParameter("claimDescription");
-            Double amount = Double.parseDouble(request.getParameter("amount"));
-            
-            
-            Claims claims = new Claims();
-            claims.setUserId(Integer.parseInt(userId));
-            claims.setClaimRequest(claimDescription);
-            claims.setClaimDate(today());
-            claims.setClaimStatus("PNDG");
-            claims.setAmount(amount);
-            UserFunctionDAO userFunction = new UserFunctionDAO(); 
-//            String status = userFunction.checkStatus(Integer.parseInt(userId));
-            RequestDispatcher rd = request.getRequestDispatcher("UserDashboard.jsp");            
-//            if (status.equals("Normal")){
-//            
-//            rd.forward(request, response);
-//            
-//            }
-//            else if((status.equals("Member"))){               
-            userFunction.makeClaim(claims);            
-            rd.forward(request, response);
-//            }
-             
-            
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(claimRequest.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        HttpSession session = request.getSession();
+        String userId = session.getAttribute("userId").toString();
+        double amount = Double.parseDouble(request.getParameter("amount"));
+        int claimId = Integer.parseInt(request.getParameter("claimId"));        
+        Claims claim = new Claims();
+        claim.setClaimId(claimId);
+        userFunction.changeClaimStatus(claim);
         
         
+        Payment payment = new Payment();
+        payment.setUserId(Integer.parseInt(userId));
+        payment.setPaymentType("CLAIM "+claimId);
+        payment.setPaymentDate(today());
+        payment.setAmount(amount);
+        userFunction.makePayment(payment);
         
-        
-        
-        
+        RequestDispatcher rd = request.getRequestDispatcher("UserDashboard.jsp");
+        rd.forward(request, response);
     }
 
     /**
@@ -118,13 +107,10 @@ public class claimRequest extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    
-    
     private String today(){
         Date today = new Date();
         SimpleDateFormat dateForamater = new SimpleDateFormat("yyyy-MM-dd");
         String dateToday = dateForamater.format(today);
         return dateToday;
     }
-
 }

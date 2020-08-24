@@ -8,6 +8,7 @@ package com.xyzdriversassociation.dao;
 import com.xyzdriversassociation.controller.DatabaseConnection;
 import com.xyzdriversassociation.model.UserDetails;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,7 +39,7 @@ public class UserDao {
             prestmt.setString(3,userDetails.getFirstName());
             prestmt.setString(4,userDetails.getLastName());
             prestmt.setString(5,userDetails.getDob());
-            prestmt.setString(6,userDetails.getDoc());
+            prestmt.setDate(6, userDetails.getDoc());
             prestmt.setString(7, userDetails.getAccountStatus());
             
             result = prestmt.executeUpdate();

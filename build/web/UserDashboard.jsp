@@ -111,8 +111,7 @@
                     <div class="d-flex justify-content-between">
                       <i class="fas fa-shopping-cart fa-3x text-warning"></i>
                       <div class="text-right text-secondary">
-                        <h5>Total Claims & Outstanding Balance</h5>
-                
+                        <h5>Total Claims & Outstanding Balance</h5>                
                       </div>
                     </div>
                   </div>
@@ -187,14 +186,15 @@
                     <%
                     rs = userFunction.getOutstandingClaim(Integer.parseInt(userID));                   
                     while(rs.next()){
+                        int claimId = rs.getInt("CLAIM_ID");
                     %>
                   <tbody>
                     <tr>
-                      <th><%=rs.getInt("CLAIM_ID")%></th>
+                      <th><%=claimId%></th>
                       <td><%=rs.getString("CLAIM_DATE")%></td>
                       <td><%=rs.getDouble("CLAIM_AMOUNT")%></td>
-                    
-                      <td><button type="button" class="btn btn-info btn-sm">Pay</button></td>
+                       
+                      <td><a href="ClaimPayment.jsp?ClaimId=<%=claimId%>"><button type="button" class="btn btn-info btn-sm">Pay</button></a></td>
                   </tbody>
                   <%
                   }
@@ -221,7 +221,7 @@
 
                     <!-- Email -->
                     
-                    <textarea id="w3review" name="claimDescription" rows="4" cols="70" placeholder="Claim Description" required></textarea>
+                    <textarea id="w3review" name="claimDescription" rows="4" cols="50" placeholder="Claim Description" required></textarea>
 					 <br><br>
                     <!-- Name -->
                     <input type="number" id="defaultSubscriptionFormPassword" class="form-control mb-4" name="amount" placeholder="Amount" required>

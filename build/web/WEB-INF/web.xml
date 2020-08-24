@@ -21,24 +21,8 @@
         <servlet-class>com.xyzdriversassociation.controller.UserController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>claimRequest</servlet-name>
-        <servlet-class>com.xyzdriversassociation.controller.claimRequest</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>adminLogoutController</servlet-name>
-        <servlet-class>com.xyzdriversassociation.controller.adminLogoutController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>updateUserStatus</servlet-name>
-        <servlet-class>com.xyzdriversassociation.controller.updateUserStatus</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>updateClaimStatus</servlet-name>
-        <servlet-class>com.xyzdriversassociation.controller.updateClaimStatus</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>searchUser</servlet-name>
-        <servlet-class>com.xyzdriversassociation.controller.searchUser</servlet-class>
+        <servlet-name>PaymentServlet</servlet-name>
+        <servlet-class>com.xyzdriversassociation.controller.PaymentServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UserController</servlet-name>
@@ -68,26 +52,50 @@
         <servlet-name>LogoutController</servlet-name>
         <url-pattern>/logoutController</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>SearchUser</servlet-name>
+        <servlet-class>com.xyzdriversassociation.controller.searchUser</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchUser</servlet-name>
+        <url-pattern>/searchUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentServlet</servlet-name>
+        <url-pattern>/paymentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>claimRequest</servlet-name>
+        <servlet-class>com.xyzdriversassociation.controller.claimRequest</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>claimRequest</servlet-name>
         <url-pattern>/claimRequest</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>adminLogoutController</servlet-name>
-        <url-pattern>/adminLogoutController</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>updateUserStatus</servlet-name>
+        <servlet-class>com.xyzdriversassociation.controller.updateUserStatus</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>updateUserStatus</servlet-name>
         <url-pattern>/updateUserStatus</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>updateClaimStatus</servlet-name>
+        <servlet-class>com.xyzdriversassociation.controller.updateClaimStatus</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>updateClaimStatus</servlet-name>
         <url-pattern>/updateClaimStatus</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>adminLogoutController</servlet-name>
+        <servlet-class>com.xyzdriversassociation.controller.adminLogoutController</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>searchUser</servlet-name>
-        <url-pattern>/searchUser</url-pattern>
-    </servlet-mapping>
+        <servlet-name>adminLogoutController</servlet-name>
+        <url-pattern>/adminLogoutController</url-pattern>
+    </servlet-mapping>    
     <session-config>
         <session-timeout>
            20

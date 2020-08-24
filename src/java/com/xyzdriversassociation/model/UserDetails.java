@@ -5,6 +5,8 @@
  */
 package com.xyzdriversassociation.model;
 
+import java.sql.Date;
+
 
 
 /**
@@ -18,7 +20,7 @@ public class UserDetails {
     String userName;
     String password;
     String dob;
-    String doc;
+    Date doc;
     String accountStatus;
     
     public UserDetails(){
@@ -27,7 +29,7 @@ public class UserDetails {
 
     
     
-    public UserDetails(String firstName, String lastName, String dob, String doc, String accountStatus) {
+    public UserDetails(String firstName, String lastName, String dob, Date doc, String accountStatus) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dob = dob;
@@ -59,11 +61,11 @@ public class UserDetails {
         this.dob = dob;
     }
 
-    public String getDoc() {
+    public Date getDoc() {
         return doc;
     }
 
-    public void setDoc(String doc) {
+    public void setDoc(Date doc) {
         this.doc = doc;
     }
 
